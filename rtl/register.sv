@@ -11,10 +11,13 @@ module register (
     output logic [31:0] rd2        // read data 2
 );
 
+    //32 bit vector array
     logic [31:0] regs [31:0];
 
     // Read ports (combinational)
     always_comb begin
+        //check if rs1/rs2 address is 0. If 0, set value to 0. 
+        //Otherwise, store value found in rs1/rs2 address.
         rd1 = (rs1 == 0) ? 32'b0 : regs[rs1];
         rd2 = (rs2 == 0) ? 32'b0 : regs[rs2];
     end
@@ -27,6 +30,7 @@ module register (
             for (i = 0; i < 32; i = i + 1)
                 regs[i] <= 32'b0;
         end else if (we && rd != 0)
+            //If valid write enable and destination, set regs[rd] to write value.
             regs[rd] <= wd;
     end
 

@@ -72,8 +72,8 @@ module cpu (
         .a(rd1),
         .b(rd2),
         .op(4'b0000), // ADD only for now
-        .y(alu_y),
-        .zero(zero)
+        .y(alu_y),  //output
+        .zero(zero) //output
     );
 
     initial begin

@@ -1,0 +1,19 @@
+verilator --binary --trace -sv rtl/decoder.sv tb/decoder_tb.sv --top-module decoder_tb
+./obj_dir/Vdecoder_tb
+gtkwave decoder.vcd
+
+verilator --binary --trace -sv rtl/register.sv tb/register_tb.sv --top-module register_tb
+./obj_dir/Vregister_tb
+gtkwave register.vcd
+
+verilator --binary --trace -sv rtl/alu.sv tb/alu_tb.sv --top-module alu_tb
+./obj_dir/Valu_tb
+gtkwave alu.vcd
+
+verilator --binary --trace -sv rtl/cpu.sv tb/cpu_tb.sv --top-module cpu_tb
+./obj_dir/Vcpu_tb
+gtkwave cpu.vcd
+
+verilator --binary --trace -sv rtl/*.sv tb/cpu_tb.sv --top-module cpu_tb
+./obj_dir/Vcontrol_unit_tb
+gtkwave control_unit.vcd
