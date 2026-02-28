@@ -4,6 +4,7 @@
 #include "Valu_tb__pch.h"
 #include "Valu_tb.h"
 #include "Valu_tb___024root.h"
+#include "Valu_tb___024unit.h"
 
 // FUNCTIONS
 Valu_tb__Syms::~Valu_tb__Syms()

@@ -15,7 +15,6 @@ void Vcpu_tb___024root___eval_initial(Vcpu_tb___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu_tb___024root___eval_initial\n"); );
     // Body
     Vcpu_tb___024root___eval_initial__TOP(vlSelf);
-    vlSelf->__Vm_traceActivity[1U] = 1U;
     Vcpu_tb___024root___eval_initial__TOP__Vtiming__0(vlSelf);
     Vcpu_tb___024root___eval_initial__TOP__Vtiming__1(vlSelf);
     vlSelf->__Vtrigprevexpr___TOP__cpu_tb__DOT__clk__0 
@@ -70,7 +69,6 @@ VL_INLINE_OPT void Vcpu_tb___024root___nba_sequent__TOP__1(Vcpu_tb___024root* vl
     __Vdlyvset__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v0 = 0U;
     __Vdlyvset__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32 = 0U;
     if (vlSelf->cpu_tb__DOT__rst) {
-        vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__unnamedblk1__DOT__i = 0x20U;
         __Vdlyvset__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v0 = 1U;
     } else if (((0x33U == (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode)) 
                 & (0U != (0x1fU & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
@@ -132,195 +130,6 @@ VL_INLINE_OPT void Vcpu_tb___024root___nba_sequent__TOP__2(Vcpu_tb___024root* vl
                    >> 2U))];
     vlSelf->cpu_tb__DOT__dut__DOT__opcode = (0x7fU 
                                              & vlSelf->cpu_tb__DOT__dut__DOT__instruction);
-    vlSelf->cpu_tb__DOT__dut__DOT__imm = ((0x40U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                           ? ((0x20U 
-                                               & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                               ? ((0x10U 
-                                                   & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                   ? 0U
-                                                   : 
-                                                  ((8U 
-                                                    & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                    ? 
-                                                   ((4U 
-                                                     & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                     ? 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (((- (IData)(
-                                                                   (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 0x1fU))) 
-                                                        << 0x15U) 
-                                                       | ((0x100000U 
-                                                           & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                              >> 0xbU)) 
-                                                          | ((0xff000U 
-                                                              & vlSelf->cpu_tb__DOT__dut__DOT__instruction) 
-                                                             | ((0x800U 
-                                                                 & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 9U)) 
-                                                                | (0x7feU 
-                                                                   & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                      >> 0x14U))))))
-                                                       : 0U)
-                                                      : 0U)
-                                                     : 0U)
-                                                    : 
-                                                   ((4U 
-                                                     & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                     ? 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (((- (IData)(
-                                                                   (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 0x1fU))) 
-                                                        << 0xcU) 
-                                                       | (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                          >> 0x14U))
-                                                       : 0U)
-                                                      : 0U)
-                                                     : 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (((- (IData)(
-                                                                   (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 0x1fU))) 
-                                                        << 0xdU) 
-                                                       | ((0x1000U 
-                                                           & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                              >> 0x13U)) 
-                                                          | ((0x800U 
-                                                              & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                 << 4U)) 
-                                                             | ((0x7e0U 
-                                                                 & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 0x14U)) 
-                                                                | (0x1eU 
-                                                                   & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                      >> 7U))))))
-                                                       : 0U)
-                                                      : 0U))))
-                                               : 0U)
-                                           : ((0x20U 
-                                               & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                               ? ((0x10U 
-                                                   & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                   ? 
-                                                  ((8U 
-                                                    & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                    ? 0U
-                                                    : 
-                                                   ((4U 
-                                                     & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                     ? 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (0xfffff000U 
-                                                       & vlSelf->cpu_tb__DOT__dut__DOT__instruction)
-                                                       : 0U)
-                                                      : 0U)
-                                                     : 0U))
-                                                   : 
-                                                  ((8U 
-                                                    & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                    ? 0U
-                                                    : 
-                                                   ((4U 
-                                                     & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                     ? 0U
-                                                     : 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (((- (IData)(
-                                                                   (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 0x1fU))) 
-                                                        << 0xcU) 
-                                                       | ((0xfe0U 
-                                                           & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                              >> 0x14U)) 
-                                                          | (0x1fU 
-                                                             & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                >> 7U))))
-                                                       : 0U)
-                                                      : 0U))))
-                                               : ((0x10U 
-                                                   & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                   ? 
-                                                  ((8U 
-                                                    & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                    ? 0U
-                                                    : 
-                                                   ((4U 
-                                                     & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                     ? 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (0xfffff000U 
-                                                       & vlSelf->cpu_tb__DOT__dut__DOT__instruction)
-                                                       : 0U)
-                                                      : 0U)
-                                                     : 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (((- (IData)(
-                                                                   (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 0x1fU))) 
-                                                        << 0xcU) 
-                                                       | (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                          >> 0x14U))
-                                                       : 0U)
-                                                      : 0U)))
-                                                   : 
-                                                  ((8U 
-                                                    & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                    ? 0U
-                                                    : 
-                                                   ((4U 
-                                                     & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                     ? 0U
-                                                     : 
-                                                    ((2U 
-                                                      & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                      ? 
-                                                     ((1U 
-                                                       & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))
-                                                       ? 
-                                                      (((- (IData)(
-                                                                   (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                                    >> 0x1fU))) 
-                                                        << 0xcU) 
-                                                       | (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
-                                                          >> 0x14U))
-                                                       : 0U)
-                                                      : 0U))))));
 }
 
 VL_INLINE_OPT void Vcpu_tb___024root___nba_comb__TOP__0(Vcpu_tb___024root* vlSelf) {
@@ -354,11 +163,9 @@ void Vcpu_tb___024root___eval_nba(Vcpu_tb___024root* vlSelf) {
     }
     if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
         Vcpu_tb___024root___nba_sequent__TOP__1(vlSelf);
-        vlSelf->__Vm_traceActivity[3U] = 1U;
     }
     if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
         Vcpu_tb___024root___nba_sequent__TOP__2(vlSelf);
-        vlSelf->__Vm_traceActivity[4U] = 1U;
     }
     if ((3ULL & vlSelf->__VnbaTriggered.word(0U))) {
         Vcpu_tb___024root___nba_comb__TOP__0(vlSelf);

@@ -1,3 +1,6 @@
+import CPU_DEFS::*;
+
+
 module alu (
     input  logic [31:0] a,      // operand 1
     input  logic [31:0] b,      // operand 2

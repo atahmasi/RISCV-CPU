@@ -12,23 +12,20 @@ VL_INLINE_OPT VlCoroutine Vcpu_tb___024root___eval_initial__TOP__Vtiming__0(Vcpu
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu_tb___024root___eval_initial__TOP__Vtiming__0\n"); );
     // Body
     vlSymsp->_vm_contextp__->dumpfile(std::string{"cpu.vcd"});
-    vlSymsp->_traceDumpOpen();
+    VL_PRINTF_MT("-Info: tb/cpu_tb.sv:12: $dumpvar ignored, as Verilated without --trace\n");
     co_await vlSelf->__VdlySched.delay(0xaULL, nullptr, 
                                        "tb/cpu_tb.sv", 
                                        14);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->cpu_tb__DOT__rst = 0U;
     vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs[1U] = 0xaU;
     vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs[2U] = 0x14U;
     co_await vlSelf->__VdlySched.delay(0x32ULL, nullptr, 
                                        "tb/cpu_tb.sv", 
                                        20);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     VL_WRITEF("x3 = %0#\nx4 = %0#\n",32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
               [3U],32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
               [4U]);
     VL_FINISH_MT("tb/cpu_tb.sv", 25, "");
-    vlSelf->__Vm_traceActivity[2U] = 1U;
 }
 
 #ifdef VL_DEBUG

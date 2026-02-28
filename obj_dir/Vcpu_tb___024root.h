@@ -24,14 +24,11 @@ class alignas(VL_CACHE_LINE_BYTES) Vcpu_tb___024root final : public VerilatedMod
     CData/*0:0*/ __VactContinue;
     IData/*31:0*/ cpu_tb__DOT__dut__DOT__pc;
     IData/*31:0*/ cpu_tb__DOT__dut__DOT__instruction;
-    IData/*31:0*/ cpu_tb__DOT__dut__DOT__imm;
     IData/*31:0*/ cpu_tb__DOT__dut__DOT__rd1;
     IData/*31:0*/ cpu_tb__DOT__dut__DOT__rd2;
-    IData/*31:0*/ cpu_tb__DOT__dut__DOT__rf__DOT__unnamedblk1__DOT__i;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<IData/*31:0*/, 256> cpu_tb__DOT__dut__DOT__imem;
     VlUnpacked<IData/*31:0*/, 32> cpu_tb__DOT__dut__DOT__rf__DOT__regs;
-    VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
     VlDelayScheduler __VdlySched;
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<3> __VactTriggered;

@@ -16,6 +16,7 @@
 
 // INCLUDE MODULE CLASSES
 #include "Valu_tb___024root.h"
+#include "Valu_tb___024unit.h"
 
 // SYMS CLASS (contains all model state)
 class alignas(VL_CACHE_LINE_BYTES)Valu_tb__Syms final : public VerilatedSyms {

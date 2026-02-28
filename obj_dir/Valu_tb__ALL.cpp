@@ -8,6 +8,8 @@
 #include "Valu_tb___024root__Slow.cpp"
 #include "Valu_tb___024root__DepSet_h4cc5cbec__0__Slow.cpp"
 #include "Valu_tb___024root__DepSet_h0ecdb284__0__Slow.cpp"
+#include "Valu_tb___024unit__Slow.cpp"
+#include "Valu_tb___024unit__DepSet_hef8084e3__0__Slow.cpp"
 #include "Valu_tb__Syms.cpp"
 #include "Valu_tb__Trace__0__Slow.cpp"
 #include "Valu_tb__TraceDecls__0__Slow.cpp"

@@ -1,3 +1,6 @@
+import CPU_DEFS::*;
+
+
 module control_unit (
     input  logic [6:0] opcode,
     input  logic [2:0] funct3,
@@ -30,57 +33,57 @@ module control_unit (
 
         case (opcode)
 
-            7'b0110011: begin // R-type
+            OP_REG: begin // R-type
                 reg_write = 1;
 
                 case ({funct7, funct3})
-                    {7'b0000000,3'b000}: alu_ctrl = 4'b0000; // ADD
-                    {7'b0100000,3'b000}: alu_ctrl = 4'b0001; // SUB
-                    {7'b0000000,3'b111}: alu_ctrl = 4'b0010; // AND
-                    {7'b0000000,3'b110}: alu_ctrl = 4'b0011; // OR
-                    {7'b0000000,3'b100}: alu_ctrl = 4'b0100; // XOR
-                    {7'b0000000,3'b010}: alu_ctrl = 4'b0101; // SLT
+                    {7'b0000000,3'b000}: alu_ctrl = ALU_ADD; 
+                    {7'b0100000,3'b000}: alu_ctrl = ALU_SUB; 
+                    {7'b0000000,3'b111}: alu_ctrl = ALU_AND; 
+                    {7'b0000000,3'b110}: alu_ctrl = ALU_OR; 
+                    {7'b0000000,3'b100}: alu_ctrl = ALU_XOR; 
+                    {7'b0000000,3'b010}: alu_ctrl = ALU_SLT; 
                 endcase
             end
 
-            7'b0010011: begin // I-type 
+            OP_IMM: begin // I-type 
                 reg_write = 1;
                 alu_src   = 1;
 
                 case (funct3)
-                    3'b000: alu_ctrl = 4'b0000; // ADDI
-                    3'b111: alu_ctrl = 4'b0010; // ANDI
-                    3'b110: alu_ctrl = 4'b0011; // ORI
-                    3'b100: alu_ctrl = 4'b0100; // XORI
-                    3'b010: alu_ctrl = 4'b0101; // SLTI
+                    3'b000: alu_ctrl = ALU_ADD; 
+                    3'b111: alu_ctrl = ALU_AND; 
+                    3'b110: alu_ctrl = ALU_OR; 
+                    3'b100: alu_ctrl = ALU_XOR; 
+                    3'b010: alu_ctrl = ALU_SLT; 
                 endcase
             end
 
-            7'b0000011: begin // LOAD (LW)
+            OP_LOAD: begin // LOAD (LW)
                 reg_write  = 1;
                 mem_read   = 1;
                 mem_to_reg = 1;
                 alu_src    = 1;
-                alu_ctrl   = 4'b0000; // address = rs1 + imm
+                alu_ctrl   = ALU_ADD; // address = rs1 + imm
             end
 
-            7'b0100011: begin // STORE (SW)
+            OP_STORE: begin // STORE (SW)
                 mem_write = 1;
                 alu_src   = 1;
-                alu_ctrl  = 4'b0000;
+                alu_ctrl  = ALU_ADD;
             end
 
-            7'b1100011: begin // BRANCH
+            OP_BRANCH: begin // BRANCH
                 branch   = 1;
-                alu_ctrl = 4'b0001; // SUB for comparison
+                alu_ctrl = ALU_SUB; // SUB for comparison
             end
 
-            7'b1101111: begin // JAL
+            OP_JAL: begin // JAL
                 jal       = 1;
                 reg_write = 1;
             end
 
-            7'b1100111: begin // JALR
+            OP_JALR: begin // JALR
                 jalr      = 1;
                 reg_write = 1;
                 alu_src   = 1;

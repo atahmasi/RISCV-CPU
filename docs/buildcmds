@@ -6,11 +6,11 @@ verilator --binary --trace -sv rtl/register.sv tb/register_tb.sv --top-module re
 ./obj_dir/Vregister_tb
 gtkwave register.vcd
 
-verilator --binary --trace -sv rtl/alu.sv tb/alu_tb.sv --top-module alu_tb
+verilator --binary --trace -sv rtl/CPU_DEFS.sv rtl/alu.sv tb/alu_tb.sv --top-module alu_tb
 ./obj_dir/Valu_tb
 gtkwave alu.vcd
 
-verilator --binary --trace -sv rtl/cpu.sv tb/cpu_tb.sv --top-module cpu_tb
+verilator --binary --trace -sv rtl/CPU_DEFS.sv rtl/cpu.sv tb/cpu_tb.sv --top-module cpu_tb
 ./obj_dir/Vcpu_tb
 gtkwave cpu.vcd
 

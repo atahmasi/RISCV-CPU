@@ -1,3 +1,5 @@
+import CPU_DEFS::*;
+
 module decoder (
     input  logic [31:0] instruction,
     output logic [6:0]  opcode,
@@ -10,7 +12,7 @@ module decoder (
 );
 
     // Define RISC-V opcodes as an enum for readability
-    typedef enum logic [6:0] {
+   /* typedef enum logic [6:0] {
         OP_LUI    = 7'b0110111,  // Load Upper Immediate
         OP_AUIPC  = 7'b0010111,  // Add Upper Immediate to PC
         OP_JAL    = 7'b1101111,  // Jump and Link
@@ -21,7 +23,7 @@ module decoder (
         OP_IMM    = 7'b0010011,  // Immediate arithmetic
         OP_REG    = 7'b0110011   // Register-register arithmetic
     } opcode_t;
-
+*/
     always_comb begin
         // Extract common fields
         opcode = instruction[6:0];

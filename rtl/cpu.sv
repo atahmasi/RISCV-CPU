@@ -1,3 +1,5 @@
+import CPU_DEFS::*;
+
 module cpu (
     input  logic clk,
     input  logic rst
@@ -53,7 +55,13 @@ module cpu (
     register rf (
         .clk(clk),
         .rst(rst),
-        .we(opcode == 7'b0110011), // R-type only
+        .we((opcode == OP_REG)   || 
+            (opcode == OP_IMM)   ||
+            (opcode == OP_LOAD)  ||
+            (opcode == OP_JAL)   ||
+            (opcode == OP_JALR)  ||
+            (opcode == OP_LUI)   ||
+            (opcode == OP_AUIPC)), // Types requiring write
         .rs1(rs1),
         .rs2(rs2),
         .rd(rd),

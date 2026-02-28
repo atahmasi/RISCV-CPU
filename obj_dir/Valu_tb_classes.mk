@@ -33,6 +33,8 @@ VM_CLASSES_SLOW += \
 	Valu_tb___024root__Slow \
 	Valu_tb___024root__DepSet_h4cc5cbec__0__Slow \
 	Valu_tb___024root__DepSet_h0ecdb284__0__Slow \
+	Valu_tb___024unit__Slow \
+	Valu_tb___024unit__DepSet_hef8084e3__0__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
