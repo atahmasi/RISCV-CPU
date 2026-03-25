@@ -10,10 +10,10 @@ verilator --binary --trace -sv rtl/CPU_DEFS.sv rtl/alu.sv tb/alu_tb.sv --top-mod
 ./obj_dir/Valu_tb
 gtkwave alu.vcd
 
-verilator --binary --trace -sv rtl/CPU_DEFS.sv rtl/cpu.sv tb/cpu_tb.sv --top-module cpu_tb
-./obj_dir/Vcpu_tb
-gtkwave cpu.vcd
-
-verilator --binary --trace -sv rtl/*.sv tb/cpu_tb.sv --top-module cpu_tb
+verilator --binary --trace -sv rtl/CPU_DEFS.sv rtl/control_unit.sv tb/control_unit_tb.sv --top-module cpu_tb rtl/control_unit.sv
 ./obj_dir/Vcontrol_unit_tb
 gtkwave control_unit.vcd
+
+verilator --binary --trace -sv rtl/*.sv tb/cpu_tb.sv --top-module cpu_tb
+./obj_dir/Vcpu_tb
+gtkwave cpu.vcd

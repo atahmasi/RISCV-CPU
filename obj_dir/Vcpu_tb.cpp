@@ -2,6 +2,7 @@
 // DESCRIPTION: Verilator output: Model implementation (design independent parts)
 
 #include "Vcpu_tb__pch.h"
+#include "verilated_vcd_c.h"
 
 //============================================================
 // Constructors
@@ -44,6 +45,7 @@ void Vcpu_tb::eval_step() {
     // Debug assertions
     Vcpu_tb___024root___eval_debug_assertions(&(vlSymsp->TOP));
 #endif  // VL_DEBUG
+    vlSymsp->__Vm_activity = true;
     vlSymsp->__Vm_deleter.deleteAll();
     if (VL_UNLIKELY(!vlSymsp->__Vm_didInit)) {
         vlSymsp->__Vm_didInit = true;
@@ -56,6 +58,14 @@ void Vcpu_tb::eval_step() {
     Vcpu_tb___024root___eval(&(vlSymsp->TOP));
     // Evaluate cleanup
     Verilated::endOfEval(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vcpu_tb::eval_end_step() {
+    VL_DEBUG_IF(VL_DBG_MSGF("+eval_end_step Vcpu_tb::eval_end_step\n"); );
+#ifdef VM_TRACE
+    // Tracing
+    if (VL_UNLIKELY(vlSymsp->__Vm_dumping)) vlSymsp->_traceDump();
+#endif  // VM_TRACE
 }
 
 //============================================================
@@ -90,10 +100,40 @@ void Vcpu_tb::prepareClone() const { contextp()->prepareClone(); }
 void Vcpu_tb::atClone() const {
     contextp()->threadPoolpOnClone();
 }
+std::unique_ptr<VerilatedTraceConfig> Vcpu_tb::traceConfig() const {
+    return std::unique_ptr<VerilatedTraceConfig>{new VerilatedTraceConfig{false, false, false}};
+};
 
 //============================================================
 // Trace configuration
 
+void Vcpu_tb___024root__trace_decl_types(VerilatedVcd* tracep);
+
+void Vcpu_tb___024root__trace_init_top(Vcpu_tb___024root* vlSelf, VerilatedVcd* tracep);
+
+VL_ATTR_COLD static void trace_init(void* voidSelf, VerilatedVcd* tracep, uint32_t code) {
+    // Callback from tracep->open()
+    Vcpu_tb___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vcpu_tb___024root*>(voidSelf);
+    Vcpu_tb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    if (!vlSymsp->_vm_contextp__->calcUnusedSigs()) {
+        VL_FATAL_MT(__FILE__, __LINE__, __FILE__,
+            "Turning on wave traces requires Verilated::traceEverOn(true) call before time 0.");
+    }
+    vlSymsp->__Vm_baseCode = code;
+    tracep->pushPrefix(std::string{vlSymsp->name()}, VerilatedTracePrefixType::SCOPE_MODULE);
+    Vcpu_tb___024root__trace_decl_types(tracep);
+    Vcpu_tb___024root__trace_init_top(vlSelf, tracep);
+    tracep->popPrefix();
+}
+
+VL_ATTR_COLD void Vcpu_tb___024root__trace_register(Vcpu_tb___024root* vlSelf, VerilatedVcd* tracep);
+
 VL_ATTR_COLD void Vcpu_tb::trace(VerilatedVcdC* tfp, int levels, int options) {
-    vl_fatal(__FILE__, __LINE__, __FILE__,"'Vcpu_tb::trace()' called on model that was Verilated without --trace option");
+    if (tfp->isOpen()) {
+        vl_fatal(__FILE__, __LINE__, __FILE__,"'Vcpu_tb::trace()' shall not be called after 'VerilatedVcdC::open()'.");
+    }
+    if (false && levels && options) {}  // Prevent unused
+    tfp->spTrace()->addModel(this);
+    tfp->spTrace()->addInitCb(&trace_init, &(vlSymsp->TOP));
+    Vcpu_tb___024root__trace_register(&(vlSymsp->TOP), tfp->spTrace());
 }

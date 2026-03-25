@@ -13,6 +13,9 @@ module register (
 
     //32 bit vector array
     logic [31:0] regs [31:0];
+    //assign regs[1] = 10;
+    //assign regs[2] = 20;
+
 
     // Read ports (combinational)
     always_comb begin
@@ -23,7 +26,7 @@ module register (
     end
 
     // Write port (synchronous)
-    always_ff @(posedge clk) begin
+    always_ff @(posedge clk or posedge rst) begin
        if (rst) begin
             // Clear all registers on reset
             integer i;
