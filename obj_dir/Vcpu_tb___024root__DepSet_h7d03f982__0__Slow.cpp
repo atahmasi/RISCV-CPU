@@ -704,22 +704,28 @@ VL_ATTR_COLD void Vcpu_tb___024root___stl_sequent__TOP__0(Vcpu_tb___024root* vlS
                                                    (vlSelf->cpu_tb__DOT__dut__DOT__rd1 
                                                     + vlSelf->cpu_tb__DOT__dut__DOT__rd2))))));
     vlSelf->cpu_tb__DOT__dut__DOT__write_data = vlSelf->cpu_tb__DOT__dut__DOT__alu_y;
-    if (((IData)(vlSelf->cpu_tb__DOT__dut__DOT__jal) 
-         | (IData)(vlSelf->cpu_tb__DOT__dut__DOT__jalr))) {
+    if (VL_UNLIKELY(((IData)(vlSelf->cpu_tb__DOT__dut__DOT__jal) 
+                     | (IData)(vlSelf->cpu_tb__DOT__dut__DOT__jalr)))) {
+        VL_WRITEF("JAL DEBUG BEFORE WRITEDATA UPDATE: pc=%0# write_data=%0#\n",
+                  32,vlSelf->cpu_tb__DOT__dut__DOT__pc,
+                  32,vlSelf->cpu_tb__DOT__dut__DOT__write_data);
         vlSelf->cpu_tb__DOT__dut__DOT__write_data = 
             ((IData)(4U) + vlSelf->cpu_tb__DOT__dut__DOT__pc);
+        VL_WRITEF("JAL DEBUG: pc=%0# write_data=%0#\n",
+                  32,vlSelf->cpu_tb__DOT__dut__DOT__pc,
+                  32,vlSelf->cpu_tb__DOT__dut__DOT__write_data);
     }
     vlSelf->cpu_tb__DOT__dut__DOT__pc_next = ((IData)(4U) 
                                               + vlSelf->cpu_tb__DOT__dut__DOT__pc);
     if (vlSelf->cpu_tb__DOT__dut__DOT__jalr) {
-        vlSelf->cpu_tb__DOT__dut__DOT__pc_next = (0xfffffffeU 
+        vlSelf->cpu_tb__DOT__dut__DOT__pc_next = (0xfffffffcU 
                                                   & (vlSelf->cpu_tb__DOT__dut__DOT__rd1 
                                                      + vlSelf->cpu_tb__DOT__dut__DOT__imm));
     } else if (vlSelf->cpu_tb__DOT__dut__DOT__jal) {
         vlSelf->cpu_tb__DOT__dut__DOT__pc_next = (vlSelf->cpu_tb__DOT__dut__DOT__pc 
                                                   + vlSelf->cpu_tb__DOT__dut__DOT__imm);
     } else if (((IData)(vlSelf->cpu_tb__DOT__dut__DOT__branch) 
-                & (1U == vlSelf->cpu_tb__DOT__dut__DOT__alu_y))) {
+                & (0U != vlSelf->cpu_tb__DOT__dut__DOT__alu_y))) {
         vlSelf->cpu_tb__DOT__dut__DOT__pc_next = (vlSelf->cpu_tb__DOT__dut__DOT__pc 
                                                   + vlSelf->cpu_tb__DOT__dut__DOT__imm);
     }

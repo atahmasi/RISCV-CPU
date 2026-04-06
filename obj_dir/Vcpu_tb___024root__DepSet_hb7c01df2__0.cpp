@@ -14,57 +14,134 @@ VL_INLINE_OPT VlCoroutine Vcpu_tb___024root___eval_initial__TOP__Vtiming__0(Vcpu
     vlSymsp->_vm_contextp__->dumpfile(std::string{"cpu.vcd"});
     vlSymsp->_traceDumpOpen();
     vlSelf->cpu_tb__DOT__dut__DOT__imem[0U] = 0xa00093U;
-    vlSelf->cpu_tb__DOT__dut__DOT__imem[1U] = 0x1400113U;
-    vlSelf->cpu_tb__DOT__dut__DOT__imem[2U] = 0x2081b3U;
-    vlSelf->cpu_tb__DOT__dut__DOT__imem[3U] = 0x118233U;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[1U] = 0xa00113U;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[2U] = 0x208463U;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[3U] = 0x6300193U;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[4U] = 0x2a00193U;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[5U] = 0x8002efU;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[6U] = 0x6f00213U;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[7U] = 0x3700213U;
+    vlSelf->cpu_tb__DOT__dut__DOT__imem[8U] = 0x8367U;
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       35);
+                                                       38);
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       35);
+                                                       38);
     vlSelf->cpu_tb__DOT__rst = 0U;
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       38);
+                                                       42);
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       38);
+                                                       42);
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       38);
+                                                       42);
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       38);
+                                                       42);
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       38);
+                                                       42);
     co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge cpu_tb.clk)", 
                                                        "tb/cpu_tb.sv", 
-                                                       38);
-    VL_WRITEF("x1 = %0#\nx2 = %0#\nx3 = %0#\nx4 = %0#\nInitial PC = %x\n",
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    co_await vlSelf->__VtrigSched_h049087fc__0.trigger(0U, 
+                                                       nullptr, 
+                                                       "@(posedge cpu_tb.clk)", 
+                                                       "tb/cpu_tb.sv", 
+                                                       42);
+    VL_WRITEF("x1 = %0# (expect 10)\nx2 = %0# (expect 10)\nx3 = %0# (expect 42 if branch worked)\nx4 = %0# (expect 55 if jal worked)\nx5 = %0# (return addr from JAL)\nx6 = %0# (return addr from JALR)\nFinal PC = %x\n",
               32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
               [1U],32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
               [2U],32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
               [3U],32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
-              [4U],32,vlSelf->cpu_tb__DOT__dut__DOT__pc);
-    VL_FINISH_MT("tb/cpu_tb.sv", 46, "");
+              [4U],32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
+              [5U],32,vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs
+              [6U],32,vlSelf->cpu_tb__DOT__dut__DOT__pc);
+    VL_FINISH_MT("tb/cpu_tb.sv", 58, "");
 }
 
 #ifdef VL_DEBUG

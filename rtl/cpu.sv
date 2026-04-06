@@ -88,8 +88,11 @@ module cpu (
     always_comb begin
         write_data = alu_y;
 
-        if (jal || jalr)
+        if (jal || jalr) begin
+            $display("JAL DEBUG BEFORE WRITEDATA UPDATE: pc=%0d write_data=%0d", pc, write_data);
             write_data = pc + 32'd4;
+            $display("JAL DEBUG: pc=%0d write_data=%0d", pc, write_data);
+        end
     end
 
     // PC Control Logic
@@ -98,11 +101,14 @@ module cpu (
 
         // priority: JALR > JAL > BRANCH
         if (jalr)
-            pc_next = (rd1 + imm) & 32'hFFFFFFFE;
+            pc_next = (rd1 + imm) & 32'hFFFFFFFC;
         else if (jal)
             pc_next = pc + imm;
-        else if (branch && alu_y == 32'd1)
+        else if (branch && (alu_y != 32'd0))
             pc_next = pc + imm;
+        
+        /*$display("PC=%0d instr=%h branch=%b alu_y=%0d imm=%0d pc_next=%0d",
+             pc, instruction, branch, alu_y, imm, pc_next);*/
     end
 
     // Memory Init
