@@ -47,7 +47,8 @@ module alu (
             ALU_SRLI: y = rd1 >> imm[4:0];
             ALU_SRAI: y = $signed(rd1) >>> imm[4:0];
             
-            // Branch operations (if you want ALU to compute comparisons)
+            // Branch operations (if you want ALU to compute comparisons). Sets high or low. Not used in current method
+            // CPU file handles Branching (by changing write_data) and PC updates. 
             ALU_BEQ: y = (rd1 == rd2) ? 32'd1 : 32'd0;
             ALU_BNE: y = (rd1 != rd2) ? 32'd1 : 32'd0;
             ALU_BLT: y = ($signed(rd1) < $signed(rd2)) ? 32'd1 : 32'd0;
@@ -55,6 +56,8 @@ module alu (
             ALU_BGE: y = ($signed(rd1) >= $signed(rd2)) ? 32'd1 : 32'd0;
             ALU_BGEU: y = (rd1 >= rd2) ? 32'd1 : 32'd0;
 
+            ALU_LUI:  y = imm;           // rd1 ignored
+            ALU_AUIPC: y = rd1 + imm;  // rd1 = PC
 
             // Default catch-all for unimplemented operations
             default: y = 32'b0;

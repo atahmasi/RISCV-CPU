@@ -32,9 +32,12 @@ module register (
             integer i;
             for (i = 0; i < 32; i = i + 1)
                 regs[i] <= 32'b0;
-        end else if (we && rd != 0)
+        end else if (we && rd != 0) begin
             //If valid write enable and destination, set regs[rd] to write value.
+            //$display("Writing x%0d <= %08h", rd, wd);
             regs[rd] <= wd;
+            //$display("regs[rd] = %08h", regs[rd-1]);
+        end
     end
 
 endmodule

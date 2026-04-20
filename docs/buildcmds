@@ -14,6 +14,15 @@ verilator --binary --trace -sv rtl/CPU_DEFS.sv rtl/control_unit.sv tb/control_un
 ./obj_dir/Vcontrol_unit_tb
 gtkwave control_unit.vcd
 
+verilator --binary --trace -sv rtl/CPU_DEFS.sv rtl/uart_tx.sv tb/uart_tx_tb.sv --top-module uart_tx_tb
+./obj_dir/Vuart_tx_tb
+gtkwave uart_tx.vcd
+
 verilator --binary --trace -sv rtl/*.sv tb/cpu_tb.sv --top-module cpu_tb
 ./obj_dir/Vcpu_tb
 gtkwave cpu.vcd
+
+verilator --binary --trace -sv rtl/*.sv tb/top_tb.sv --top-module top_tb
+./obj_dir/Vtop_tb
+gtkwave top.vcd
+

@@ -9,6 +9,8 @@ module control_unit (
     output logic       branch,
     output logic       jal,
     output logic       jalr,
+    output logic       mem_read,
+    output logic       mem_write,
     output logic [4:0] alu_ctrl
 );
 
@@ -17,6 +19,8 @@ module control_unit (
         branch    = 0;
         jal       = 0;
         jalr      = 0;
+        mem_read  = 0;
+        mem_write = 0;
         alu_ctrl  = ALU_ADD;
 
         // Decode
@@ -68,12 +72,14 @@ module control_unit (
             // LOAD
             OP_LOAD: begin
                 reg_write = 1;
-                alu_ctrl  = ALU_ADD; // address calc
+                mem_read  = 1;
+                alu_ctrl  = ALU_ADDI; // address calc
             end
 
             // STORE
             OP_STORE: begin
-                alu_ctrl = ALU_ADD; // address calc
+                mem_write = 1;
+                alu_ctrl = ALU_ADDI; // address calc
             end
 
             // BRANCH
@@ -103,6 +109,16 @@ module control_unit (
                 reg_write = 1;
             end
 
+            // LUI
+            OP_LUI:  begin
+                 alu_ctrl = ALU_LUI;
+                 reg_write = 1;
+            end
+            //AUIPC
+            OP_AUIPC: begin
+                alu_ctrl = ALU_AUIPC;
+                reg_write = 1;
+            end
             // Default
             default: begin
                 alu_ctrl = ALU_ADD;

@@ -36,8 +36,13 @@ package CPU_DEFS;
     localparam ALU_BGEU = 5'b11000;
 
 
-    localparam ALU_PASS  = 5'b11001; // pass-through (rd1 or imm)
+    /*localparam ALU_PASS  = 5'b11001; // pass-through (rd1 or imm)
     localparam ALU_PC4   = 5'b11010; // PC + 4 (for JAL/JALR writeback)
+    unused. may use later.*/
+
+    // LUI / AUIPC
+    localparam ALU_LUI   = 5'b11011; // rd = imm << 12
+    localparam ALU_AUIPC = 5'b11100; // rd = PC + (imm << 12)
 
     // RISC-V opcodes
     localparam OP_LUI    = 7'b0110111;

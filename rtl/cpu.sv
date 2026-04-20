@@ -2,7 +2,12 @@ import CPU_DEFS::*;
 
 module cpu (
     input  logic clk,
-    input  logic rst
+    input  logic rst,
+    output logic [31:0] debug_x1,
+
+    output logic        mem_write_out,
+    output logic [31:0] mem_address_out,
+    output logic [31:0] mem_wdata_out
 );
 
     // Program Counter
@@ -15,11 +20,12 @@ module cpu (
             pc <= pc_next;
     end
 
-
-    // Instruction Memory
+    // Data Memory, Instruction Memory
+    logic [31:0] dmem [0:255];
     logic [31:0] imem [0:255];
-    logic [31:0] instruction;
 
+    // Instruction Fetch
+    logic [31:0] instruction;
     assign instruction = imem[pc[9:2]];
 
     // Decode
@@ -43,6 +49,7 @@ module cpu (
     // Control Unit
     logic reg_write, branch, jal, jalr;
     logic [4:0] alu_ctrl;
+    logic mem_read, mem_write;
 
     control_unit controller0 (
         .opcode(opcode),
@@ -52,13 +59,18 @@ module cpu (
         .branch(branch),
         .jal(jal),
         .jalr(jalr),
+        .mem_read(mem_read),
+        .mem_write(mem_write),
         .alu_ctrl(alu_ctrl)
     );
 
-    // Register 
+    //Datapath signals
     logic [31:0] rd1, rd2;
     logic [31:0] write_data;
+    logic [31:0] alu_y;
+    logic [31:0] mem_read_data;
 
+    // Register 
     register rf (
         .clk(clk),
         .rst(rst),
@@ -71,51 +83,58 @@ module cpu (
         .rd2(rd2)
     );
 
+    logic [31:0] alu_in1;
+    assign alu_in1 = (alu_ctrl == ALU_AUIPC) ? pc : rd1;
 
     // ALU
-    logic [31:0] alu_y;
-
     alu alu0 (
-        .rd1(rd1),
+        .rd1(alu_in1),
         .rd2(rd2),
         .imm(imm),
         .alu_ctrl(alu_ctrl),
         .y(alu_y),
-        .zero() 
+        .zero()
     );
 
-    // Writeback 
-    always_comb begin
-        write_data = alu_y;
+    // Memory Read / Write
+    always_ff @(posedge clk) begin
+        if (mem_write)
+            dmem[alu_y[9:2]] <= rd2;
 
-        if (jal || jalr) begin
-            $display("JAL DEBUG BEFORE WRITEDATA UPDATE: pc=%0d write_data=%0d", pc, write_data);
+        if (mem_read)
+            mem_read_data <= dmem[alu_y[9:2]];
+    end
+
+    // Writeback
+    always_comb begin
+        if (jal || jalr)
             write_data = pc + 32'd4;
-            $display("JAL DEBUG: pc=%0d write_data=%0d", pc, write_data);
-        end
+        else if (mem_read)
+            write_data = mem_read_data;
+        else
+            write_data = alu_y;
     end
 
     // PC Control Logic
     always_comb begin
-        pc_next = pc + 32'd4;
-
-        // priority: JALR > JAL > BRANCH
         if (jalr)
             pc_next = (rd1 + imm) & 32'hFFFFFFFC;
         else if (jal)
             pc_next = pc + imm;
         else if (branch && (alu_y != 32'd0))
             pc_next = pc + imm;
-        
-        /*$display("PC=%0d instr=%h branch=%b alu_y=%0d imm=%0d pc_next=%0d",
-             pc, instruction, branch, alu_y, imm, pc_next);*/
+        else 
+            pc_next = pc + 32'd4;
     end
 
+    // expose memory bus
+    assign mem_write_out   = mem_write;
+    assign mem_address_out = alu_y;
+    assign mem_wdata_out   = rd2;
+
     // Memory Init
-    initial begin
-        imem[0] = 32'h002081B3; // ADD x3, x1, x2
-        imem[1] = 32'h00118233; // ADD x4, x3, x1
-        imem[2] = 32'h00000013; // NOP
-    end
+    /*initial begin
+        $readmemh("program.hex", imem);
+    end*/
 
 endmodule
