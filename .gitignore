@@ -1,0 +1,19 @@
+# Quartus generated files
+db/
+incremental_db/
+output_files/
+simulation/
+*.qws
+*.rpt
+*.smsg
+*.summary
+*.pin
+*.sof
+*.pof
+*.jic
+*.qpf
+*.qsf
+
+# Verilator generated files
+obj_dir/
+*.vcd

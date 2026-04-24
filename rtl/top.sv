@@ -1,7 +1,7 @@
 import CPU_DEFS::*;
 
 module top (
-    input  logic CLOCK_50,
+    input  logic MAX10_CLK1_50,
     input  logic [1:0] KEY,
     output logic [9:0] LEDR
 );
