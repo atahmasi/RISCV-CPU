@@ -13,7 +13,7 @@ simulation/
 *.jic
 *.qpf
 *.qsf
-
+*.vcd
 # Verilator generated files
 obj_dir/
 *.vcd
