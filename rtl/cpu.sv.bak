@@ -97,12 +97,13 @@ module cpu (
     );
 
     // Memory Read / Write
-	always_ff @(posedge clk) begin
-		 if (mem_write && (alu_y[31:10] == 22'b0))  // only write dmem for low addresses
-			  dmem[alu_y[9:2]] <= rd2;
-		 if (mem_read)
-			  mem_read_data <= dmem[alu_y[9:2]];
-	end
+    always_ff @(posedge clk) begin
+        if (mem_write)
+            dmem[alu_y[9:2]] <= rd2;
+
+        if (mem_read)
+            mem_read_data <= dmem[alu_y[9:2]];
+    end
 
     // Writeback
     always_comb begin
@@ -135,19 +136,5 @@ module cpu (
     /*initial begin
         $readmemh("program.hex", imem);
     end*/
-	 initial begin
-    for (int i = 0; i < 256; i++) begin
-        imem[i] = 32'h00000013; // nop
-        dmem[i] = 32'h00000000;
-    end
-    // lui  t0, 0x80000     → t0  = 0x80000000
-    // addi a0, x0, 0xFF    → a0  = 0xFF (bottom 8 LEDs all on)
-    // sw   a0, 0(t0)       → mem[0x80000000] = 0xFF
-    // jal  x0, 0           → halt
-    imem[0] = 32'h800002B7; // lui  t0, 0x80000
-    imem[1] = 32'h0FF00513; // addi a0, x0, 0xFF
-    imem[2] = 32'h00A2A023; // sw   a0, 0(t0)
-    imem[3] = 32'h0000006F; // jal  x0, 0
-end
 
 endmodule
