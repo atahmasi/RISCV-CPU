@@ -17,6 +17,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vcpu_tb___024root final : public VerilatedMod
     // DESIGN SPECIFIC STATE
     CData/*0:0*/ cpu_tb__DOT__clk;
     CData/*0:0*/ cpu_tb__DOT__rst;
+    CData/*0:0*/ cpu_tb__DOT__dut__DOT__load_stall;
     CData/*6:0*/ cpu_tb__DOT__dut__DOT__opcode;
     CData/*0:0*/ cpu_tb__DOT__dut__DOT__reg_write;
     CData/*0:0*/ cpu_tb__DOT__dut__DOT__branch;
@@ -25,6 +26,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vcpu_tb___024root final : public VerilatedMod
     CData/*4:0*/ cpu_tb__DOT__dut__DOT__alu_ctrl;
     CData/*0:0*/ cpu_tb__DOT__dut__DOT__mem_read;
     CData/*0:0*/ cpu_tb__DOT__dut__DOT__mem_write;
+    CData/*0:0*/ __Vdly__cpu_tb__DOT__dut__DOT__load_stall;
+    CData/*0:0*/ __Vdlyvset__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v0;
+    CData/*4:0*/ __Vdlyvdim0__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32;
+    CData/*0:0*/ __Vdlyvset__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32;
     CData/*0:0*/ __VstlFirstIteration;
     CData/*0:0*/ __Vtrigprevexpr___TOP__cpu_tb__DOT__clk__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__cpu_tb__DOT__rst__0;
@@ -43,6 +48,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vcpu_tb___024root final : public VerilatedMod
     IData/*31:0*/ cpu_tb__DOT__dut__DOT__alu_in1;
     IData/*31:0*/ cpu_tb__DOT__dut__DOT____VdfgTmp_h8a6dd295__0;
     IData/*31:0*/ cpu_tb__DOT__dut__DOT__rf__DOT__unnamedblk1__DOT__i;
+    IData/*31:0*/ __Vdlyvval__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<IData/*31:0*/, 32> cpu_tb__DOT__last_regs;
     VlUnpacked<IData/*31:0*/, 1024> cpu_tb__DOT__dut__DOT__dmem;

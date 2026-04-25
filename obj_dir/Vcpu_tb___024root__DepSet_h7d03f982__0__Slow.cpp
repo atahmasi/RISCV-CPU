@@ -309,26 +309,10 @@ VL_ATTR_COLD void Vcpu_tb___024root___stl_sequent__TOP__0(Vcpu_tb___024root* vlS
     vlSelf->cpu_tb__DOT__dut__DOT____VdfgTmp_h8a6dd295__0 
         = (vlSelf->cpu_tb__DOT__dut__DOT__imm + vlSelf->cpu_tb__DOT__dut__DOT__pc);
     vlSelf->cpu_tb__DOT__dut__DOT__reg_write = 0U;
-    vlSelf->cpu_tb__DOT__dut__DOT__mem_write = 0U;
     vlSelf->cpu_tb__DOT__dut__DOT__mem_read = 0U;
+    vlSelf->cpu_tb__DOT__dut__DOT__mem_write = 0U;
     if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
                   >> 6U)))) {
-        if ((0x20U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
-            if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
-                          >> 4U)))) {
-                if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
-                              >> 3U)))) {
-                    if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
-                                  >> 2U)))) {
-                        if ((2U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
-                            if ((1U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
-                                vlSelf->cpu_tb__DOT__dut__DOT__mem_write = 1U;
-                            }
-                        }
-                    }
-                }
-            }
-        }
         if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
                       >> 5U)))) {
             if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
@@ -340,6 +324,22 @@ VL_ATTR_COLD void Vcpu_tb___024root___stl_sequent__TOP__0(Vcpu_tb___024root* vlS
                         if ((2U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
                             if ((1U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
                                 vlSelf->cpu_tb__DOT__dut__DOT__mem_read = 1U;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if ((0x20U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
+            if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
+                          >> 4U)))) {
+                if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
+                              >> 3U)))) {
+                    if ((1U & (~ ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode) 
+                                  >> 2U)))) {
+                        if ((2U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
+                            if ((1U & (IData)(vlSelf->cpu_tb__DOT__dut__DOT__opcode))) {
+                                vlSelf->cpu_tb__DOT__dut__DOT__mem_write = 1U;
                             }
                         }
                     }
@@ -916,7 +916,7 @@ VL_ATTR_COLD void Vcpu_tb___024root___stl_sequent__TOP__0(Vcpu_tb___024root* vlS
                                                  ((IData)(4U) 
                                                   + vlSelf->cpu_tb__DOT__dut__DOT__pc)
                                                   : 
-                                                 ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__mem_read)
+                                                 ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__load_stall)
                                                    ? vlSelf->cpu_tb__DOT__dut__DOT__mem_read_data
                                                    : vlSelf->cpu_tb__DOT__dut__DOT__alu_y));
     vlSelf->cpu_tb__DOT__dut__DOT__pc_next = ((IData)(vlSelf->cpu_tb__DOT__dut__DOT__jalr)
@@ -1019,6 +1019,7 @@ VL_ATTR_COLD void Vcpu_tb___024root___ctor_var_reset(Vcpu_tb___024root* vlSelf) 
         vlSelf->cpu_tb__DOT__last_regs[__Vi0] = VL_RAND_RESET_I(32);
     }
     vlSelf->cpu_tb__DOT__unnamedblk1__DOT__i = 0;
+    vlSelf->cpu_tb__DOT__dut__DOT__load_stall = VL_RAND_RESET_I(1);
     vlSelf->cpu_tb__DOT__dut__DOT__pc = VL_RAND_RESET_I(32);
     vlSelf->cpu_tb__DOT__dut__DOT__pc_next = VL_RAND_RESET_I(32);
     for (int __Vi0 = 0; __Vi0 < 1024; ++__Vi0) {
@@ -1048,6 +1049,11 @@ VL_ATTR_COLD void Vcpu_tb___024root___ctor_var_reset(Vcpu_tb___024root* vlSelf) 
         vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__regs[__Vi0] = VL_RAND_RESET_I(32);
     }
     vlSelf->cpu_tb__DOT__dut__DOT__rf__DOT__unnamedblk1__DOT__i = VL_RAND_RESET_I(32);
+    vlSelf->__Vdly__cpu_tb__DOT__dut__DOT__load_stall = VL_RAND_RESET_I(1);
+    vlSelf->__Vdlyvset__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v0 = 0;
+    vlSelf->__Vdlyvdim0__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32 = 0;
+    vlSelf->__Vdlyvval__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32 = VL_RAND_RESET_I(32);
+    vlSelf->__Vdlyvset__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32 = 0;
     vlSelf->__Vtrigprevexpr___TOP__cpu_tb__DOT__clk__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__cpu_tb__DOT__rst__0 = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 3; ++__Vi0) {
