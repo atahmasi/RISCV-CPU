@@ -1,34 +1,26 @@
 #define LED_REG (*(volatile unsigned int *)0x80000000)
 
-volatile int a = 5;
-volatile int b = 3;
-volatile int r = 0;
-volatile int mem_test = 42;
-
 void delay() {
     for(volatile int i = 0; i < 5000000; i++);
 }
 
 int main() {
-    LED_REG = a;        // expect 0x05
+    LED_REG = 5;        // expect 00000101
     delay();
 
-    r = a + b;
-    LED_REG = r;        // expect 0x08
+    LED_REG = 5 + 3;    // expect 00001000
     delay();
 
-    r = a - b;
-    LED_REG = r;        // expect 0x02
+    LED_REG = 5 - 3;    // expect 00000010
     delay();
 
-    r = a & b;
-    LED_REG = r;        // expect 0x01
+    LED_REG = 5 & 3;    // expect 00000001
     delay();
 
-    LED_REG = mem_test; // expect 0x2A
+    LED_REG = 5 | 3;    // expect 00000111
     delay();
 
-    LED_REG = 0xFF;
+    LED_REG = 0xFF;     // expect 11111111
     while(1);
     return 0;
 }
