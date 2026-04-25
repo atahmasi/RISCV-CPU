@@ -24,6 +24,22 @@ VL_ATTR_COLD void Vcpu_tb___024root___eval_static__TOP(Vcpu_tb___024root* vlSelf
     vlSelf->cpu_tb__DOT__rst = 1U;
 }
 
+VL_ATTR_COLD void Vcpu_tb___024root___eval_initial__TOP(Vcpu_tb___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vcpu_tb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu_tb___024root___eval_initial__TOP\n"); );
+    // Init
+    VlWide<4>/*127:0*/ __Vtemp_1;
+    // Body
+    __Vtemp_1[0U] = 0x2e686578U;
+    __Vtemp_1[1U] = 0x6772616dU;
+    __Vtemp_1[2U] = 0x2f70726fU;
+    __Vtemp_1[3U] = 0x7377U;
+    VL_READMEM_N(true, 32, 256, 0, VL_CVT_PACK_STR_NW(4, __Vtemp_1)
+                 ,  &(vlSelf->cpu_tb__DOT__dut__DOT__imem)
+                 , 0, ~0ULL);
+}
+
 VL_ATTR_COLD void Vcpu_tb___024root___eval_final(Vcpu_tb___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vcpu_tb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;

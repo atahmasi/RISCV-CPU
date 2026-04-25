@@ -5,6 +5,7 @@
 #include "Vcpu_tb__pch.h"
 #include "Vcpu_tb___024root.h"
 
+VL_ATTR_COLD void Vcpu_tb___024root___eval_initial__TOP(Vcpu_tb___024root* vlSelf);
 VlCoroutine Vcpu_tb___024root___eval_initial__TOP__Vtiming__0(Vcpu_tb___024root* vlSelf);
 VlCoroutine Vcpu_tb___024root___eval_initial__TOP__Vtiming__1(Vcpu_tb___024root* vlSelf);
 
@@ -13,6 +14,7 @@ void Vcpu_tb___024root___eval_initial(Vcpu_tb___024root* vlSelf) {
     Vcpu_tb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu_tb___024root___eval_initial\n"); );
     // Body
+    Vcpu_tb___024root___eval_initial__TOP(vlSelf);
     Vcpu_tb___024root___eval_initial__TOP__Vtiming__0(vlSelf);
     Vcpu_tb___024root___eval_initial__TOP__Vtiming__1(vlSelf);
     vlSelf->__Vtrigprevexpr___TOP__cpu_tb__DOT__clk__0 
@@ -108,7 +110,8 @@ VL_INLINE_OPT void Vcpu_tb___024root___nba_sequent__TOP__0(Vcpu_tb___024root* vl
                                                       >> 2U))];
     }
     if (((IData)(vlSelf->cpu_tb__DOT__dut__DOT__mem_write) 
-         & (0x80000000U != vlSelf->cpu_tb__DOT__dut__DOT__alu_y))) {
+         & (0U == (vlSelf->cpu_tb__DOT__dut__DOT__alu_y 
+                   >> 0xcU)))) {
         __Vdlyvval__cpu_tb__DOT__dut__DOT__dmem__v0 
             = vlSelf->cpu_tb__DOT__dut__DOT__rd2;
         __Vdlyvset__cpu_tb__DOT__dut__DOT__dmem__v0 = 1U;

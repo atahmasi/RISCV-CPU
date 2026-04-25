@@ -21,7 +21,7 @@ module cpu (
     end
 
     // Data Memory, Instruction Memory
-    logic [31:0] dmem [0:255];
+    logic [31:0] dmem [0:1023];
     logic [31:0] imem [0:255];
 
     // Instruction Fetch
