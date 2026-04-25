@@ -98,12 +98,11 @@ module cpu (
 
     // Memory Read / Write
 	always_ff @(posedge clk) begin
-		 if (mem_write && (alu_y[31:10] == 22'b0))  // only write dmem for low addresses
-			  dmem[alu_y[9:2]] <= rd2;
-		 if (mem_read)
-			  mem_read_data <= dmem[alu_y[9:2]];
-	end
-
+		if (mem_write && (alu_y[31:12] == 20'b0))
+            dmem[alu_y[11:2]] <= rd2;
+        if (mem_read)
+            mem_read_data <= dmem[alu_y[11:2]];
+    end
     // Writeback
     always_comb begin
         if (jal || jalr)
