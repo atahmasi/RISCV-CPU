@@ -99,10 +99,10 @@ module cpu (
     // Memory Read / Write
 	always_ff @(posedge clk) begin
 		if (mem_write && (alu_y[31:13] == 19'b0) && (alu_y[12:11] != 2'b00))
-            dmem[alu_y[11:2]] <= rd2;
-        if (mem_read)
-            mem_read_data <= dmem[alu_y[11:2]];
+            dmem[alu_y[11:2]] <= rd2;      
     end
+
+    assign mem_read_data <= dmem[alu_y[11:2]];
     // Writeback
     always_comb begin
         if (jal || jalr)
