@@ -2,7 +2,7 @@ ENTRY(_start)
 
 MEMORY
 {
-    IMEM (rx) : ORIGIN = 0x00000000, LENGTH = 1024
+    IMEM (rx) : ORIGIN = 0x00000000, LENGTH = 2048
     DMEM (rw) : ORIGIN = 0x00000400, LENGTH = 4096
 }
 
