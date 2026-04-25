@@ -22,11 +22,11 @@ module cpu (
 
     // Data Memory, Instruction Memory
     logic [31:0] dmem [0:1023];
-    logic [31:0] imem [0:255];
+    logic [31:0] imem [0:511];
 
     // Instruction Fetch
     logic [31:0] instruction;
-    assign instruction = imem[pc[9:2]];
+    assign instruction = imem[pc[10:2]];
 
     // Decode
     logic [6:0] opcode;

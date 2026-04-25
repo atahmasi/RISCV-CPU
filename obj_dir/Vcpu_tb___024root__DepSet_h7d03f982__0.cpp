@@ -47,7 +47,7 @@ VL_INLINE_OPT void Vcpu_tb___024root___nba_sequent__TOP__0(Vcpu_tb___024root* vl
     Vcpu_tb__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcpu_tb___024root___nba_sequent__TOP__0\n"); );
     // Init
-    CData/*7:0*/ __Vdlyvdim0__cpu_tb__DOT__dut__DOT__dmem__v0;
+    SData/*9:0*/ __Vdlyvdim0__cpu_tb__DOT__dut__DOT__dmem__v0;
     __Vdlyvdim0__cpu_tb__DOT__dut__DOT__dmem__v0 = 0;
     IData/*31:0*/ __Vdlyvval__cpu_tb__DOT__dut__DOT__dmem__v0;
     __Vdlyvval__cpu_tb__DOT__dut__DOT__dmem__v0 = 0;
@@ -105,7 +105,7 @@ VL_INLINE_OPT void Vcpu_tb___024root___nba_sequent__TOP__0(Vcpu_tb___024root* vl
     }
     if (vlSelf->cpu_tb__DOT__dut__DOT__mem_read) {
         vlSelf->cpu_tb__DOT__dut__DOT__mem_read_data 
-            = vlSelf->cpu_tb__DOT__dut__DOT__dmem[(0xffU 
+            = vlSelf->cpu_tb__DOT__dut__DOT__dmem[(0x3ffU 
                                                    & (vlSelf->cpu_tb__DOT__dut__DOT__alu_y 
                                                       >> 2U))];
     }
@@ -116,8 +116,8 @@ VL_INLINE_OPT void Vcpu_tb___024root___nba_sequent__TOP__0(Vcpu_tb___024root* vl
             = vlSelf->cpu_tb__DOT__dut__DOT__rd2;
         __Vdlyvset__cpu_tb__DOT__dut__DOT__dmem__v0 = 1U;
         __Vdlyvdim0__cpu_tb__DOT__dut__DOT__dmem__v0 
-            = (0xffU & (vlSelf->cpu_tb__DOT__dut__DOT__alu_y 
-                        >> 2U));
+            = (0x3ffU & (vlSelf->cpu_tb__DOT__dut__DOT__alu_y 
+                         >> 2U));
     }
     if (__Vdlyvset__cpu_tb__DOT__dut__DOT__dmem__v0) {
         vlSelf->cpu_tb__DOT__dut__DOT__dmem[__Vdlyvdim0__cpu_tb__DOT__dut__DOT__dmem__v0] 
@@ -197,8 +197,8 @@ VL_INLINE_OPT void Vcpu_tb___024root___nba_sequent__TOP__1(Vcpu_tb___024root* vl
             = __Vdlyvval__cpu_tb__DOT__dut__DOT__rf__DOT__regs__v32;
     }
     vlSelf->cpu_tb__DOT__dut__DOT__instruction = vlSelf->cpu_tb__DOT__dut__DOT__imem
-        [(0xffU & (vlSelf->cpu_tb__DOT__dut__DOT__pc 
-                   >> 2U))];
+        [(0x1ffU & (vlSelf->cpu_tb__DOT__dut__DOT__pc 
+                    >> 2U))];
     vlSelf->cpu_tb__DOT__dut__DOT__rd2 = ((0U == (0x1fU 
                                                   & (vlSelf->cpu_tb__DOT__dut__DOT__instruction 
                                                      >> 0x14U)))
