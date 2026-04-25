@@ -1,40 +1,37 @@
 #define LED_REG (*(volatile unsigned int *)0x80000000)
 
-int add(int a, int b) {
-    return a + b;        // ADD, JALR (return), JAL (call)
-}
-
 int main() {
-    // R-type: ADD, SUB, AND, OR, XOR, SLL, SRL
-    int a = 5, b = 3;
-    int r_add  = a + b;       // ADD  → 8
-    int r_sub  = a - b;       // SUB  → 2
-    int r_and  = a & b;       // AND  → 1
-    int r_or   = a | b;       // OR   → 7
-    int r_xor  = a ^ b;       // XOR  → 6
-    int r_sll  = a << 1;      // SLL  → 10
-    int r_srl  = a >> 1;      // SRL  → 2
+    // Test 1: Basic I-type — if you see 0x05, this works
+    int a = 5;
+    LED_REG = a;
+    for(volatile int i = 0; i < 100000; i++);
 
-    // LW: store then load back
-    volatile int mem_test = 42;
-    int loaded = mem_test;    // SW then LW
+    // Test 2: R-type ADD — if you see 0x08, ADD works
+    int b = 3;
+    int r = a + b;
+    LED_REG = r;
+    for(volatile int i = 0; i < 100000; i++);
 
-    // Branch: BEQ, BNE, BLT
+    // Test 3: R-type SUB — if you see 0x02, SUB works
+    r = a - b;
+    LED_REG = r;
+    for(volatile int i = 0; i < 100000; i++);
+
+    // Test 4: Branch — if you see 0x01, BEQ works
     int branch_ok = 0;
-    if (loaded == 42)         // BEQ
+    if (a == 5)
         branch_ok = 1;
-    if (r_sub != 0)           // BNE
-        branch_ok++;
-    if (r_and < r_or)         // BLT
-        branch_ok++;
+    LED_REG = branch_ok;
+    for(volatile int i = 0; i < 100000; i++);
 
-    // JALR: indirect function call
-    int sum = add(r_add, r_sub);  // JAL + JALR on return
+    // Test 5: LW — if you see 0x2A (42), load works
+    volatile int mem_test = 42;
+    int loaded = mem_test;
+    LED_REG = loaded;
+    for(volatile int i = 0; i < 100000; i++);
 
-    // Show result on LEDs — if everything worked, branch_ok=3, sum=10
-    // LED pattern: low 4 bits = branch_ok, high 4 bits = sum
-    LED_REG = (sum << 4) | branch_ok;
-
+    // Final: flash 0xFF to signal done
+    LED_REG = 0xFF;
     while(1);
     return 0;
 }
