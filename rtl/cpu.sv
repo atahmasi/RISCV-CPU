@@ -132,10 +132,20 @@ module cpu (
     assign mem_wdata_out   = rd2;
 
     // Memory Init
-    /*initial begin
-        $readmemh("program.hex", imem);
-    end*/
-	 initial begin
+    initial begin
+        $readmemh("sw/program.hex", imem);
+    end
+	 /*initial begin
+		 for (int i = 0; i < 256; i++) begin
+			  imem[i] = 32'h00000013;
+			  dmem[i] = 32'h00000000;
+		 end
+		 imem[0] = 32'h800002B7; // lui  t0, 0x80000
+		 imem[1] = 32'h0AA00513; // addi a0, x0, 0xAA
+		 imem[2] = 32'h00A2A023; // sw   a0, 0(t0)
+		 imem[3] = 32'h0000006F; // jal  x0, 0
+	 end*/
+	 /*initial begin
     for (int i = 0; i < 256; i++) begin
         imem[i] = 32'h00000013; // nop
         dmem[i] = 32'h00000000;
@@ -148,6 +158,6 @@ module cpu (
     imem[1] = 32'h0FF00513; // addi a0, x0, 0xFF
     imem[2] = 32'h00A2A023; // sw   a0, 0(t0)
     imem[3] = 32'h0000006F; // jal  x0, 0
-end
+end*/
 
 endmodule
