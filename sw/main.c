@@ -18,13 +18,13 @@ int main() {
     // TEST 1: immediate MMIO write
     // ---------------------------
     LED_REG = 0x1;
-    delay(1000000);
+    delay(10000000);
 
     // ---------------------------
     // TEST 2: overwrite pattern
     // ---------------------------
     LED_REG = 0x3;
-    delay(1000000);
+    delay(10000000);
 
     // ---------------------------
     // TEST 3: arithmetic + function call
@@ -32,25 +32,25 @@ int main() {
     // ---------------------------
     int x = add(10, 20);   // expect 30
     LED_REG = x;           // should show 0x1E
-    delay(1000000);
+    delay(10000000);
 
     // ---------------------------
     // TEST 4: load/store behavior
     // ---------------------------
     volatile int *ptr = (volatile int *)0x80000000;
     *ptr = 0x55;
-    delay(1000000);
+    delay(10000000);
 
     int y = *ptr;          // read-back test
     LED_REG = y;           // should still be 0x55
-    delay(1000000);
+    delay(10000000);
 
     // ---------------------------
     // TEST 5: loop pattern test
     // ---------------------------
     for (int i = 0; i < 10; i++) {
         LED_REG = i;
-        delay(500000);
+        delay(5000000);
     }
 
     // ---------------------------
