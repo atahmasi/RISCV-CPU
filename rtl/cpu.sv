@@ -27,7 +27,7 @@ module cpu (
     end
 
     // Data Memory, Instruction Memory
-    logic [31:0] dmem [0:1023];
+    logic [31:0] dmem [0:2047];
     logic [31:0] imem [0:511];
 
     // Instruction Fetch
@@ -105,11 +105,10 @@ module cpu (
 
     // Memory Read / Write
     always_ff @(posedge clk) begin
-        if (mem_write && alu_y >= 32'h800 && alu_y < 32'h1800)
-            dmem[(alu_y - 32'h800) >> 2] <= rd2;
-
+        if (mem_write && (alu_y[31:13] == 19'b0))
+            dmem[alu_y[12:2]] <= rd2;
         if (mem_read)
-            mem_read_data <= dmem[(alu_y - 32'h800) >> 2];
+            mem_read_data <= dmem[alu_y[12:2]];
     end
     // Writeback
     // Stall cycle: mem_read_data is now valid, use it for LW writeback
