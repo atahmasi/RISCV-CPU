@@ -1,8 +1,13 @@
-.section .text
+ .section .text
 .global _start
 
 _start:
-    li sp, 0x1400    # top of dmem (0x800 + 0x1000 = 0x1800)
+    # Set up stack pointer to top of DMEM
+    lui  sp, 0x1        # sp = 0x00001000 (top of our memory)
+    
+    # Call main
     call main
+    
+    # If main returns, halt forever
 halt:
     j halt

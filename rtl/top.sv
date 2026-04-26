@@ -8,7 +8,6 @@ logic clk;
 logic rst;
 assign clk = MAX10_CLK1_50;
 assign rst = ~KEY[0];
-assign LEDR = led_reg;
 logic mem_write;
 logic [31:0] mem_addr;
 logic [31:0] mem_wdata;
