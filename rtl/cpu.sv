@@ -105,12 +105,12 @@ module cpu (
 
     // Memory Read / Write
     always_ff @(posedge clk) begin
-        if (mem_write && (alu_y[31:12] == 20'b0))
-            dmem[alu_y[11:2]] <= rd2;
-        if (mem_read)
-            mem_read_data <= dmem[alu_y[11:2]];
-    end
+        if (mem_write && alu_y >= 32'h800 && alu_y < 32'h1800)
+            dmem[(alu_y - 32'h800) >> 2] <= rd2;
 
+        if (mem_read)
+            mem_read_data <= dmem[(alu_y - 32'h800) >> 2];
+    end
     // Writeback
     // Stall cycle: mem_read_data is now valid, use it for LW writeback
     // JAL/JALR:    return address pc+4
